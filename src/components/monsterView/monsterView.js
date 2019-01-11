@@ -99,7 +99,9 @@ class MonsterView extends Component {
             statDiv: null
         };
     }
-
+    componentDidMount() {
+        window.scrollTo(0, 0);
+    }
 	handleChange3 = (size) => {
 	  this.setState({ size });
 	}
