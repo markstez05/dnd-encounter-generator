@@ -384,19 +384,19 @@ class MonsterView extends Component {
                         }
                        }
                         >{this.state.monster.name}</h1>
-                        <h5>{this.state.monster.type} ({this.state.monster.size})</h5>
+                        <h5>{this.state.monster.type} <span style={{ color: "Gray"}}>|</span> ({this.state.monster.size})</h5>
                         </div>
                         <div className="exp-div6">
-                            <h5>Page Number </h5><span className="monster-title2"> {this.state.monster.page}</span>
+                            <h5>Page Number: </h5><span className="monster-title2"> {this.state.monster.page}</span>
                         </div>
                         <div className="exp-div6">
-                            <h5>Challenge Raiting </h5><span className="monster-title2"> {this.state.monster.challenge_rating}</span>
+                            <h5>Challenge Raiting: </h5><span className="monster-title2"> {this.state.monster.challenge_rating}</span>
                         </div>
                         <div className="exp-div6">
-                            <h5>Exp Points  </h5><span className="monster-title2">{this.state.monster.xp} XP</span>
+                            <h5>Exp Points:  </h5><span className="monster-title2">{this.state.monster.xp} XP</span>
                         </div>
                             <div className="exp-div6">
-                            <h5>Alignment  </h5><span className="monster-title2">{this.state.monster.alignment}</span>
+                            <h5>Alignment:  </h5><span className="monster-title2">{this.state.monster.alignment}</span>
                         </div>
                         </div>
                         <div className="monster-info1">
