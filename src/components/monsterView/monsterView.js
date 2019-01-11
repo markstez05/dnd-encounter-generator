@@ -90,10 +90,13 @@ class MonsterView extends Component{
             monsters: [],
 			size: '',
 			env: '',
+            monster: {},
 			type: '',
 			challenge: '',
             total: '',
-            totalDiv: null
+            totalDiv: null,
+            monModal: null,
+            statDiv: null
         };
     }
 
@@ -150,23 +153,172 @@ class MonsterView extends Component{
            this.setState({
                monsters: ar,
                total: ar.length,
-               totalDiv: true
+               totalDiv: true,
+               statDiv: true
            })
         }
     }
     clear = () =>{
         this.setState({
             monsters: [],
+            monModal: null,
+            totalDiv: null,
+            statDiv: null
         });
     }
+    typeSort = () => {
+    this.state.monsters.sort(function(a, b) {
+      if (a.type < b.type) {
+        return -1;
+      }
+      if (a.type > b.type) {
+        return 1;
+      }
+    });
+    this.setState({
+        monsters: this.state.monsters
+    })
+  };
+      nameSort = () => {
+    this.state.monsters.sort(function(a, b) {
+      if (a.name < b.name) {
+        return -1;
+      }
+      if (a.name > b.name) {
+        return 1;
+      }
+    });
+    this.setState({
+        monsters: this.state.monsters
+    })
+  };     
+        xpSort = () => {
+    this.state.monsters.sort(function(a, b) {
+      if (a.xp < b.xp) {
+        return -1;
+      }
+      if (a.xp > b.xp) {
+        return 1;
+      }
+    });
+    this.setState({
+        monsters: this.state.monsters
+    })
+  }; 
+
+   pageSort = () => {
+    this.state.monsters.sort(function (a, b) {  return a.page - b.page;  })
+    this.setState({
+        monsters: this.state.monsters
+    })
+  };
+    onMonClick = name => {
+    this.state.monsters.filter(monster => {
+      if (monster.name === name) {
+        this.setState({ monster: monster });
+      }
+      return console.log("monsterIndex",monster);
+    });
+  };
 
     render(){
+    console.log(this.state.monsters)
     let totalDiv = null;
+    let monModal = null;
+    let statDiv = null;
     if (this.state.totalDiv === true) {
       totalDiv = (
         <div className="total-mon">
             <h1>Total:</h1><span>{this.state.total}</span>
         </div>
+      )}
+    if (this.state.statDiv === true) {
+      statDiv = (
+       <div className="mon-div-stats">
+                    <p onClick={this.nameSort}>Name</p>
+                    <p onClick={this.typeSort}>Type</p>
+                    <p onClick={this.pageSort}>Page</p>
+                    <p onClick={this.xpSort}>XP</p>
+                    <p onClick={this.xpSort}>Challenge Rating</p>
+                </div>
+      )}
+          if (this.state.monModal === true) {
+      monModal = (
+        <div 
+           onClick={() => {
+           this.setState({
+            monModal: null
+            });
+            }}
+        className="monster-div1">
+    
+                        <div data-aos="flip-down" className="monster-card1">
+                      <div>
+                        <img src={this.state.monster.img_url} className="monster-pic1" alt="monsterPic"></img>
+                       </div>
+                        <div className="exp-div5">
+                        <div className="monster-title01">
+                        <h1>{this.state.monster.name}</h1>
+                        <h5>({this.state.monster.size}) {this.state.monster.type}</h5>
+                        </div>
+                        <div className="exp-div6">
+                            <h5>Page Number </h5><span className="monster-title2"> {this.state.monster.page}</span>
+                        </div>
+                        <div className="exp-div6">
+                            <h5>Challenge Raiting </h5><span className="monster-title2"> {this.state.monster.challenge_rating}</span>
+                        </div>
+                        <div className="exp-div6">
+                            <h5>Exp Points  </h5><span className="monster-title2">{this.state.monster.xp} XP</span>
+                        </div>
+                        </div>
+                        <div className="monster-info1">
+                        <div className="monster-info">
+                        <div className="monster-stats">
+                            <p className="stat-title">ARMOR CLASS</p>
+                            <p className="stat">{this.state.monster.armorClass}</p>
+                        </div>
+                        <div className="monster-stats">
+                            <p className="stat-title">HIT POINTS</p>
+                            <p className="stat">{this.state.monster.hitPoints}</p>
+                        </div>
+                        <div className="monster-stats">
+                            <p className="stat-title">SPEED</p>
+                            <p className="stat">{this.state.monster.Speed}</p>
+                        </div>
+                        </div>
+                        <div className="monster-info">
+                        <div className="monster-stats">
+                            <p className="stat-title">STR</p>
+                            <p className="stat">{this.state.monster.STR} ({this.state.monster.STR_mod})</p>
+                        </div>
+                        <div className="monster-stats">
+                            <p className="stat-title">DEX</p>
+                            <p className="stat">{this.state.monster.DEX} ({this.state.monster.DEX_mod})</p>
+                        </div>
+                        <div className="monster-stats">
+                            <p className="stat-title">CON</p>
+                            <p className="stat">{this.state.monster.CON} ({this.state.monster.CON_mod})</p>
+                        </div>
+                        </div>
+                        <div className="monster-info">
+                        <div className="monster-stats">
+                            <p className="stat-title">INT</p>
+                            <p className="stat">{this.state.monster.INT} ({this.state.monster.INT_mod})</p>
+                        </div>
+                        <div className="monster-stats">
+                            <p className="stat-title">WIS</p>
+                            <p className="stat">{this.state.monster.WIS} ({this.state.monster.WIS_mod})</p>
+                        </div>
+                        <div className="monster-stats">
+                            <p className="stat-title">CHA</p>
+                            <p className="stat">{this.state.monster.CHA} ({this.state.monster.CHA_mod})</p>
+                        </div>
+                        </div>
+                        
+                        </div>
+
+                        </div>
+                </div>
       )}
         return(
             <div className="monview">
@@ -214,74 +366,31 @@ class MonsterView extends Component{
                 <button className="sort-button" onClick={this.genMon}>Generate</button>
                 <button className="sort-button" onClick={this.clear}>Clear</button>
                 </div>
+                {monModal}
                 {totalDiv}
-                <div className="monster-div1">
-                    {this.state.monsters.map(monster =>(
-                        <div data-aos="flip-down" className="monster-card1">
+                <div className="monster-div2">
+                {statDiv}
+                    {this.state.monsters.map((monster, name) =>(
+                        <div
+                        key= {name}
+                        id= {name}
+                        onClick={() => {
+                        this.onMonClick(monster.name);
+                        this.setState({
+                        monModal: true
+                        });
+                        }}
+                        data-aos="flip-down" 
+                        className="monster-card2"
+                        >
                       <div>
-                        <img src={monster.img_url} className="monster-pic1" alt="monsterPic"></img>
+                        <img src={monster.img_url} className="monster-pic2" alt="monsterPic"></img>
                        </div>
-                        <div className="exp-div5">
-                        <div className="monster-title01">
-                        <h1>{monster.name}</h1>
-                        <h5>({monster.size}) {monster.type}</h5>
-                        </div>
-                        <div className="exp-div6">
-                            <h5>Page Number </h5><span className="monster-title2"> {monster.page}</span>
-                        </div>
-                        <div className="exp-div6">
-                            <h5>Challenge Raiting </h5><span className="monster-title2"> {monster.challenge_rating}</span>
-                        </div>
-                        <div className="exp-div6">
-                            <h5>Exp Points  </h5><span className="monster-title2">{monster.xp} XP</span>
-                        </div>
-                        </div>
-                        <div className="monster-info1">
-                        <div className="monster-info">
-                        <div className="monster-stats">
-                            <p className="stat-title">ARMOR CLASS</p>
-                            <p className="stat">{monster.armorClass}</p>
-                        </div>
-                        <div className="monster-stats">
-                            <p className="stat-title">HIT POINTS</p>
-                            <p className="stat">{monster.hitPoints}</p>
-                        </div>
-                        <div className="monster-stats">
-                            <p className="stat-title">SPEED</p>
-                            <p className="stat">{monster.Speed}</p>
-                        </div>
-                        </div>
-                        <div className="monster-info">
-                        <div className="monster-stats">
-                            <p className="stat-title">STR</p>
-                            <p className="stat">{monster.STR} ({monster.STR_mod})</p>
-                        </div>
-                        <div className="monster-stats">
-                            <p className="stat-title">DEX</p>
-                            <p className="stat">{monster.DEX} ({monster.DEX_mod})</p>
-                        </div>
-                        <div className="monster-stats">
-                            <p className="stat-title">CON</p>
-                            <p className="stat">{monster.CON} ({monster.CON_mod})</p>
-                        </div>
-                        </div>
-                        <div className="monster-info">
-                        <div className="monster-stats">
-                            <p className="stat-title">INT</p>
-                            <p className="stat">{monster.INT} ({monster.INT_mod})</p>
-                        </div>
-                        <div className="monster-stats">
-                            <p className="stat-title">WIS</p>
-                            <p className="stat">{monster.WIS} ({monster.WIS_mod})</p>
-                        </div>
-                        <div className="monster-stats">
-                            <p className="stat-title">CHA</p>
-                            <p className="stat">{monster.CHA} ({monster.CHA_mod})</p>
-                        </div>
-                        </div>
-                        
-                        </div>
-
+                       <p>{monster.name}</p>
+                       <p>{monster.type}</p>
+                        <p>{monster.page}</p>
+                        <p>{monster.xp}</p>
+                        <p>{monster.challenge_rating}</p>
                         </div>
                     ))}
                 </div>

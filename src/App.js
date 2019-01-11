@@ -18,14 +18,14 @@ class App extends React.Component {
   }
   render() {
     return (
-      <div>
-        <Container>
+    <div>
+      <Container>
         <Route path='/' component={Nav} />
-         <Route exact path='/' component={GenGroup} />
-         <Route exact path='/compendium' component={MonsterView} />
-          </Container>
+        <Route exact path='/' component={GenGroup} />
+        <Route exact path='/compendium' component={MonsterView} />
+      </Container>
         <Route path='/' component={Footer} />
-        </div>
+    </div>
     )
   }
 }
