@@ -1510,7 +1510,7 @@ const monsters = [
     {
       name:"Bugbear",
       environment: new Set(['forest', 'grass land', 'underground']),
-      size: 'Medium',
+      size: 'medium',
       type: "humanoid",
       challenge_rating: '1',
       page: '33',

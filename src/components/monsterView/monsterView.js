@@ -191,7 +191,20 @@ class MonsterView extends Component{
     this.setState({
         monsters: this.state.monsters
     })
-  };     
+  };    
+        sizeSort = () => {
+    this.state.monsters.sort(function(a, b) {
+      if (a.size < b.size) {
+        return -1;
+      }
+      if (a.size > b.size) {
+        return 1;
+      }
+    });
+    this.setState({
+        monsters: this.state.monsters
+    })
+  };  
         xpSort = () => {
     this.state.monsters.sort(function(a, b) {
       if (a.xp < b.xp) {
@@ -237,6 +250,7 @@ class MonsterView extends Component{
        <div className="mon-div-stats">
                     <p onClick={this.nameSort}>Name</p>
                     <p onClick={this.typeSort}>Type</p>
+                    <p onClick={this.sizeSort}>Size</p>
                     <p onClick={this.pageSort}>Page</p>
                     <p onClick={this.xpSort}>XP</p>
                     <p onClick={this.xpSort}>Challenge Rating</p>
@@ -388,6 +402,7 @@ class MonsterView extends Component{
                        </div>
                        <p>{monster.name}</p>
                        <p>{monster.type}</p>
+                       <p>{monster.size}</p>
                         <p>{monster.page}</p>
                         <p>{monster.xp}</p>
                         <p>{monster.challenge_rating}</p>
