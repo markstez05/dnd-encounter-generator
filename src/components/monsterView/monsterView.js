@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import monsters from "../monsters.js";
 import {FlexDiv} from '../styles/search_info_css.js'
-import { FaAngleRight, FaAngleDown, FaArrowDown } from "react-icons/fa";
+import { FaAngleDown } from "react-icons/fa";
 import Select from 'react-select';
 import "./monsterView.css";
 
@@ -314,37 +314,37 @@ class MonsterView extends Component {
       statDiv = (
        <div className="mon-div-stats">
                     <p onClick={this.nameSort}>Name
-                    <FaArrowDown
+                    <FaAngleDown
                     style={{ color: this.state.nameBut === true ? "rgb(255, 255, 255)" : "black" }}
                     className="arrowdown"
                   />
                     </p>
                     <p onClick={this.typeSort}>Type
-                      <FaArrowDown
+                      <FaAngleDown
                     style={{ color: this.state.typeBut === true ? "rgb(255, 255, 255)" : "black" }}
                     className="arrowdown"
                   />
                     </p>
                     <p onClick={this.sizeSort}>Size
-                      <FaArrowDown
+                      <FaAngleDown
                     style={{ color: this.state.sizeBut === true ? "rgb(255, 255, 255)" : "black" }}
                     className="arrowdown"
                   />
                     </p>
                     <p onClick={this.pageSort}>Page
-                      <FaArrowDown
+                      <FaAngleDown
                     style={{ color: this.state.pageBut === true ? "rgb(255, 255, 255)" : "black" }}
                     className="arrowdown"
                   />
                     </p>
                     <p onClick={this.xpSort}>XP
-                      <FaArrowDown
+                      <FaAngleDown
                     style={{ color: this.state.expBut === true ? "rgb(255, 255, 255)" : "black" }}
                     className="arrowdown"
                   />
                     </p>
-                    <p onClick={this.xpSort2}>Challenge Rating
-                      <FaArrowDown
+                    <p className="cr" onClick={this.xpSort2}><span className="cr1">Challenge Rating</span><span className="cr2">CR</span>
+                      <FaAngleDown
                     style={{ color: this.state.crBut === true ? "rgb(255, 255, 255)" : "black" }}
                     className="arrowdown"
                   />

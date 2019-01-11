@@ -54,7 +54,16 @@
   padding-top: 1px;
   padding-left: 1px;
 }
-
+.cr{
+  display: flex;
+  align-items: center;
+}
+.cr1{
+    display: block;
+  }
+.cr2{
+  display: none;
+}
 .monster-div1 {
   margin: auto;
   top: 0;
@@ -295,7 +304,16 @@
 }
 
 @media (max-width: 700px) {
+.cr1{
+    display: none;
+  }
+.cr2{
+  display: block;
+}
   .mon-div-stats p {
+    width: 75px;
+    display: flex;
+    align-items: center;
     margin-left: 1px;
     margin-right: 5px;
     font-size: 1.2rem;
