@@ -21,7 +21,7 @@
     padding: 10px;
   }
   .monster-title2{
-    color: #D1AE78;
+    color: white;
     font-size: 1.55rem;
     padding-bottom: 10px;
     margin-bottom: 10px;
@@ -61,6 +61,7 @@
       text-align: left;
   }
   .exp-div h5{
+      color: #D1AE78;
       justify-self: center;
       font-size: 1.55rem;
       text-align: left;

@@ -177,7 +177,7 @@ class MonsterList extends Component{
                         <h3>Total Monsters: </h3>
                             </div>
                         <div className="break-stats">
-                           <h4>{this.state.players}</h4>
+                        <h4>{this.state.players}</h4>
                         <h4>{this.state.xpPer}</h4>
                         <h4>{this.state.xpTotal}</h4>
                         <h4>{this.state.monsterNum}</h4>

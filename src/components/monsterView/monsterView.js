@@ -217,10 +217,10 @@ class MonsterView extends Component {
 
     sizeSort = () => {
         this.state.monsters.sort(function (a, b) {
-            if (a.size < b.size) {
+            if (a.size > b.size) {
                 return -1;
             }
-            if (a.size > b.size) {
+            if (a.size < b.size) {
                 return 1;
             }
         });
@@ -300,7 +300,6 @@ class MonsterView extends Component {
     };
 
     render(){
-    console.log(this.state.monsters)
     let totalDiv = null;
     let monModal = null;
     let statDiv = null;
@@ -366,8 +365,26 @@ class MonsterView extends Component {
                        </div>
                         <div className="exp-div5">
                         <div className="monster-title01">
-                        <h1>{this.state.monster.name}</h1>
-                        <h5>({this.state.monster.size}) {this.state.monster.type}</h5>
+                        <h1
+                        style={{ color: 
+                       this.state.monster.type === "aberration"  ? "teal" :
+                       this.state.monster.type === "beast" ? "chocolate" :
+                       this.state.monster.type === "celestial" ? "yellow" :
+                       this.state.monster.type === "construct" ? "slategray" :
+                       this.state.monster.type === "elemental" ? "magenta" :
+                       this.state.monster.type === "fey" ? "lightyellow" :
+                       this.state.monster.type === "fiend" ? "tomato" :
+                       this.state.monster.type === "giant" ? "#F4A460" :
+                       this.state.monster.type === "humanoid" ? "moccasin" :
+                       this.state.monster.type === "monstrosity" ? "olive" :
+                       this.state.monster.type === "ooze" ? "lime" :
+                       this.state.monster.type === "undead" ? "powderblue" :
+                       this.state.monster.type === "plant" ? "green" :
+                       this.state.monster.type === "dragon" ? "gold" : "white"
+                        }
+                       }
+                        >{this.state.monster.name}</h1>
+                        <h5>{this.state.monster.type} ({this.state.monster.size})</h5>
                         </div>
                         <div className="exp-div6">
                             <h5>Page Number </h5><span className="monster-title2"> {this.state.monster.page}</span>
@@ -377,6 +394,9 @@ class MonsterView extends Component {
                         </div>
                         <div className="exp-div6">
                             <h5>Exp Points  </h5><span className="monster-title2">{this.state.monster.xp} XP</span>
+                        </div>
+                            <div className="exp-div6">
+                            <h5>Alignment  </h5><span className="monster-title2">{this.state.monster.alignment}</span>
                         </div>
                         </div>
                         <div className="monster-info1">
@@ -495,7 +515,25 @@ class MonsterView extends Component {
                         <img src={monster.img_url} className="monster-pic2" alt="monsterPic"></img>
                        </div>
                        <p className="monster-name">{monster.name}</p>
-                       <p>{monster.type}</p>
+                       <p
+                       style={{ color: 
+                       monster.type === "aberration"  ? "teal" :
+                       monster.type === "beast" ? "chocolate" :
+                       monster.type === "celestial" ? "yellow" :
+                       monster.type === "construct" ? "slategray" :
+                       monster.type === "elemental" ? "magenta" :
+                       monster.type === "fey" ? "lightyellow" :
+                       monster.type === "fiend" ? "tomato" :
+                       monster.type === "giant" ? "#F4A460" :
+                       monster.type === "humanoid" ? "moccasin" :
+                       monster.type === "monstrosity" ? "olive" :
+                       monster.type === "ooze" ? "lime" :
+                       monster.type === "undead" ? "powderblue" :
+                       monster.type === "plant" ? "green" :
+                       monster.type === "dragon" ? "gold" : "white"
+                        }
+                       }
+                       >{monster.type}</p>
                        <p>{monster.size}</p>
                         <p>{monster.page}</p>
                         <p>{monster.xp}</p>

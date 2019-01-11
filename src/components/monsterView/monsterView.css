@@ -143,7 +143,7 @@
   padding: 10px;
 }
 
-.monster-title01 h1 {
+.monster-title01 h5 {
   color: white;
 }
 .exp-div5 {
@@ -153,7 +153,9 @@
   padding-right: 20px;
   padding-left: 20px;
 }
-
+.monster-title2{
+  color: white;
+}
 .exp-div6 {
   width: 100%;
   padding-bottom: 0px;
@@ -164,6 +166,7 @@
 }
 
 .exp-div6 h5 {
+    color: #D1AE78;
   justify-self: center;
   font-size: 1.55rem;
   text-align: left;
@@ -264,7 +267,7 @@
     position: fixed;
     z-index: 200;
     margin-top: 20px;
-    height: 645px;
+    height: 650px;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -276,12 +279,14 @@
   }
 
   .exp-div5 {
+    border-bottom: 1px solid rgb(190, 190, 190);
     width: 85%;
     display: flex;
     margin: auto;
     flex-direction: column;
     padding-right: 0px;
     padding-left: 0px;
+    padding-bottom: 10px;
   }
 
   .exp-div6 {
