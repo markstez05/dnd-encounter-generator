@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import monsters from "../monsters.js";
 import {FlexDiv} from '../styles/search_info_css.js'
+import { FaAngleRight, FaAngleDown, FaArrowDown } from "react-icons/fa";
 import Select from 'react-select';
 import "./monsterView.css";
 
@@ -30,7 +31,7 @@ const options4 = [
 ]
 
 const options5 = [
-	{ value: 'any', label: 'any' },
+{ value: 'any', label: 'any' },
   { value: 'aberration', label: 'aberration' },
   { value: 'beast', label: 'beast' },
   { value: 'celestial', label: 'celestial' },
@@ -88,12 +89,18 @@ class MonsterView extends Component {
         super(props);
         this.state = {
             monsters: [],
+            monster: {},
             size: '',
             env: '',
-            monster: {},
             type: '',
             challenge: '',
             total: '',
+            nameBut: false,
+            typeBut: false,
+            sizeBut: false,
+            pageBut: false,
+            expBut: false,
+            crBut: false,
             totalDiv: null,
             monModal: null,
             statDiv: null
@@ -123,9 +130,9 @@ class MonsterView extends Component {
         let ar = []
 
         let condition1, condition2, condition3, condition4
-        console.log("vars",env,size,type,cr)
+      
         for (let i in monsters){
-            if (env === 'any' || env === undefined){
+             if (env === 'any' || env === undefined){
                 condition1 = true
             } else {
                 condition1 = monsters[i].environment.has(env)
@@ -156,7 +163,8 @@ class MonsterView extends Component {
                monsters: ar,
                total: ar.length,
                totalDiv: true,
-               statDiv: true
+               statDiv: true,
+               nameBut: true
            })
         }
     }
@@ -178,7 +186,13 @@ class MonsterView extends Component {
             }
         });
         this.setState({
-            monsters: this.state.monsters
+            monsters: this.state.monsters,
+            nameBut: false,
+            typeBut: true,
+            sizeBut: false,
+            pageBut: false,
+            expBut: false,
+            crBut: false,
         })
     };
     nameSort = () => {
@@ -191,7 +205,13 @@ class MonsterView extends Component {
             }
         });
         this.setState({
-            monsters: this.state.monsters
+            monsters: this.state.monsters,
+            nameBut: true,
+            typeBut: false,
+            sizeBut: false,
+            pageBut: false,
+            expBut: false,
+            crBut: false,
         })
     };
 
@@ -205,7 +225,13 @@ class MonsterView extends Component {
             }
         });
         this.setState({
-            monsters: this.state.monsters
+            monsters: this.state.monsters,
+            nameBut: false,
+            typeBut: false,
+            sizeBut: true,
+            pageBut: false,
+            expBut: false,
+            crBut: false,
         })
     };
         
@@ -219,7 +245,32 @@ class MonsterView extends Component {
             }
         });
         this.setState({
-            monsters: this.state.monsters
+            monsters: this.state.monsters,
+            nameBut: false,
+            typeBut: false,
+            sizeBut: false,
+            pageBut: false,
+            expBut: true,
+            crBut: false,
+        })
+    };
+        xpSort2 = () => {
+        this.state.monsters.sort(function (a, b) {
+            if (a.xp < b.xp) {
+                return -1;
+            }
+            if (a.xp > b.xp) {
+                return 1;
+            }
+        });
+        this.setState({
+            monsters: this.state.monsters,
+            nameBut: false,
+            typeBut: false,
+            sizeBut: false,
+            pageBut: false,
+            expBut: false,
+            crBut: true,
         })
     };
 
@@ -228,7 +279,13 @@ class MonsterView extends Component {
             return a.page - b.page;
         })
         this.setState({
-            monsters: this.state.monsters
+            monsters: this.state.monsters,
+            nameBut: false,
+            typeBut: false,
+            sizeBut: false,
+            pageBut: true,
+            expBut: false,
+            crBut: false,
         })
     };
     onMonClick = name => {
@@ -256,12 +313,42 @@ class MonsterView extends Component {
     if (this.state.statDiv === true) {
       statDiv = (
        <div className="mon-div-stats">
-                    <p onClick={this.nameSort}>Name</p>
-                    <p onClick={this.typeSort}>Type</p>
-                    <p onClick={this.sizeSort}>Size</p>
-                    <p onClick={this.pageSort}>Page</p>
-                    <p onClick={this.xpSort}>XP</p>
-                    <p onClick={this.xpSort}>Challenge Rating</p>
+                    <p onClick={this.nameSort}>Name
+                    <FaArrowDown
+                    style={{ color: this.state.nameBut === true ? "rgb(255, 255, 255)" : "black" }}
+                    className="arrowdown"
+                  />
+                    </p>
+                    <p onClick={this.typeSort}>Type
+                      <FaArrowDown
+                    style={{ color: this.state.typeBut === true ? "rgb(255, 255, 255)" : "black" }}
+                    className="arrowdown"
+                  />
+                    </p>
+                    <p onClick={this.sizeSort}>Size
+                      <FaArrowDown
+                    style={{ color: this.state.sizeBut === true ? "rgb(255, 255, 255)" : "black" }}
+                    className="arrowdown"
+                  />
+                    </p>
+                    <p onClick={this.pageSort}>Page
+                      <FaArrowDown
+                    style={{ color: this.state.pageBut === true ? "rgb(255, 255, 255)" : "black" }}
+                    className="arrowdown"
+                  />
+                    </p>
+                    <p onClick={this.xpSort}>XP
+                      <FaArrowDown
+                    style={{ color: this.state.expBut === true ? "rgb(255, 255, 255)" : "black" }}
+                    className="arrowdown"
+                  />
+                    </p>
+                    <p onClick={this.xpSort2}>Challenge Rating
+                      <FaArrowDown
+                    style={{ color: this.state.crBut === true ? "rgb(255, 255, 255)" : "black" }}
+                    className="arrowdown"
+                  />
+                    </p>
                 </div>
       )}
           if (this.state.monModal === true) {
