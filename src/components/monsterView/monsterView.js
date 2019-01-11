@@ -164,7 +164,12 @@ class MonsterView extends Component {
                total: ar.length,
                totalDiv: true,
                statDiv: true,
-               nameBut: true
+               nameBut: true,
+               typeBut: false,
+               sizeBut: false,
+               pageBut: false,
+               expBut: false,
+               crBut: false,
            })
         }
     }
@@ -256,10 +261,10 @@ class MonsterView extends Component {
     };
         xpSort2 = () => {
         this.state.monsters.sort(function (a, b) {
-            if (a.xp < b.xp) {
+            if (a.alignment < b.alignment) {
                 return -1;
             }
-            if (a.xp > b.xp) {
+            if (a.alignment > b.alignment) {
                 return 1;
             }
         });
@@ -295,9 +300,10 @@ class MonsterView extends Component {
                     monster: monster
                 });
             }
-            return console.log("monsterIndex", monster);
         });
     };
+    capitalize = (str) => 
+    str.charAt(0).toUpperCase() + str.slice(1);
 
     render(){
     let totalDiv = null;
@@ -366,7 +372,7 @@ class MonsterView extends Component {
                         <div className="exp-div5">
                         <div className="monster-title01">
                         <h1
-                        style={{ color: 
+                       style = {{ color: 
                        this.state.monster.type === "aberration"  ? "teal" :
                        this.state.monster.type === "beast" ? "chocolate" :
                        this.state.monster.type === "celestial" ? "yellow" :
@@ -384,7 +390,7 @@ class MonsterView extends Component {
                         }
                        }
                         >{this.state.monster.name}</h1>
-                        <h5>{this.state.monster.type} <span style={{ color: "Gray"}}>|</span> ({this.state.monster.size})</h5>
+                        <h5>{this.capitalize(this.state.monster.type)} <span style={{ color: "Gray"}}>|</span> ({this.capitalize(this.state.monster.size)})</h5>
                         </div>
                         <div className="exp-div6">
                             <h5>Page Number: </h5><span className="monster-title2"> {this.state.monster.page}</span>
@@ -396,7 +402,7 @@ class MonsterView extends Component {
                             <h5>Exp Points:  </h5><span className="monster-title2">{this.state.monster.xp} XP</span>
                         </div>
                             <div className="exp-div6">
-                            <h5>Alignment:  </h5><span className="monster-title2">{this.state.monster.alignment}</span>
+                            <h5>Alignment:  </h5><span className="monster-title2">{this.capitalize(this.state.monster.alignment)}</span>
                         </div>
                         </div>
                         <div className="monster-info1">
@@ -533,11 +539,11 @@ class MonsterView extends Component {
                        monster.type === "dragon" ? "gold" : "white"
                         }
                        }
-                       >{monster.type}</p>
-                       <p>{monster.size}</p>
+                       >{this.capitalize(monster.type)}</p>
+                       <p>{this.capitalize(monster.size)}</p>
                         <p>{monster.page}</p>
                         <p>{monster.xp}</p>
-                        <p>{monster.challenge_rating}</p>
+                        <p>{monster.alignment}</p>
                         </div>
                     ))}
                 </div>
