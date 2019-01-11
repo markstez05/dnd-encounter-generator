@@ -471,7 +471,7 @@ class MonsterView extends Component {
 		     </FlexDiv>
 			</div>
                 <div className="buttons">
-                <button className="sort-button" onClick={this.genMon}>Generate</button>
+                <button className="sort-button" onClick={this.genMon}>Find</button>
                 <button className="sort-button" onClick={this.clear}>Clear</button>
                 </div>
                 {monModal}
@@ -494,7 +494,7 @@ class MonsterView extends Component {
                       <div>
                         <img src={monster.img_url} className="monster-pic2" alt="monsterPic"></img>
                        </div>
-                       <p>{monster.name}</p>
+                       <p className="monster-name">{monster.name}</p>
                        <p>{monster.type}</p>
                        <p>{monster.size}</p>
                         <p>{monster.page}</p>
