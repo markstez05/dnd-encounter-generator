@@ -83,16 +83,16 @@ const options6 = [
   { value: 135000, label: '29' },
   { value: 155000, label: '30' },
 ]
-class MonsterView extends Component{
-    constructor(props){
+class MonsterView extends Component {
+    constructor(props) {
         super(props);
         this.state = {
             monsters: [],
-			size: '',
-			env: '',
+            size: '',
+            env: '',
             monster: {},
-			type: '',
-			challenge: '',
+            type: '',
+            challenge: '',
             total: '',
             totalDiv: null,
             monModal: null,
@@ -158,7 +158,7 @@ class MonsterView extends Component{
            })
         }
     }
-    clear = () =>{
+    clear = () => {
         this.setState({
             monsters: [],
             monModal: null,
@@ -167,72 +167,78 @@ class MonsterView extends Component{
         });
     }
     typeSort = () => {
-    this.state.monsters.sort(function(a, b) {
-      if (a.type < b.type) {
-        return -1;
-      }
-      if (a.type > b.type) {
-        return 1;
-      }
-    });
-    this.setState({
-        monsters: this.state.monsters
-    })
-  };
-      nameSort = () => {
-    this.state.monsters.sort(function(a, b) {
-      if (a.name < b.name) {
-        return -1;
-      }
-      if (a.name > b.name) {
-        return 1;
-      }
-    });
-    this.setState({
-        monsters: this.state.monsters
-    })
-  };    
-        sizeSort = () => {
-    this.state.monsters.sort(function(a, b) {
-      if (a.size < b.size) {
-        return -1;
-      }
-      if (a.size > b.size) {
-        return 1;
-      }
-    });
-    this.setState({
-        monsters: this.state.monsters
-    })
-  };  
-        xpSort = () => {
-    this.state.monsters.sort(function(a, b) {
-      if (a.xp < b.xp) {
-        return -1;
-      }
-      if (a.xp > b.xp) {
-        return 1;
-      }
-    });
-    this.setState({
-        monsters: this.state.monsters
-    })
-  }; 
+        this.state.monsters.sort(function (a, b) {
+            if (a.type < b.type) {
+                return -1;
+            }
+            if (a.type > b.type) {
+                return 1;
+            }
+        });
+        this.setState({
+            monsters: this.state.monsters
+        })
+    };
+    nameSort = () => {
+        this.state.monsters.sort(function (a, b) {
+            if (a.name < b.name) {
+                return -1;
+            }
+            if (a.name > b.name) {
+                return 1;
+            }
+        });
+        this.setState({
+            monsters: this.state.monsters
+        })
+    };
 
-   pageSort = () => {
-    this.state.monsters.sort(function (a, b) {  return a.page - b.page;  })
-    this.setState({
-        monsters: this.state.monsters
-    })
-  };
+    sizeSort = () => {
+        this.state.monsters.sort(function (a, b) {
+            if (a.size < b.size) {
+                return -1;
+            }
+            if (a.size > b.size) {
+                return 1;
+            }
+        });
+        this.setState({
+            monsters: this.state.monsters
+        })
+    };
+        
+    xpSort = () => {
+        this.state.monsters.sort(function (a, b) {
+            if (a.xp < b.xp) {
+                return -1;
+            }
+            if (a.xp > b.xp) {
+                return 1;
+            }
+        });
+        this.setState({
+            monsters: this.state.monsters
+        })
+    };
+
+    pageSort = () => {
+        this.state.monsters.sort(function (a, b) {
+            return a.page - b.page;
+        })
+        this.setState({
+            monsters: this.state.monsters
+        })
+    };
     onMonClick = name => {
-    this.state.monsters.filter(monster => {
-      if (monster.name === name) {
-        this.setState({ monster: monster });
-      }
-      return console.log("monsterIndex",monster);
-    });
-  };
+        this.state.monsters.filter(monster => {
+            if (monster.name === name) {
+                this.setState({
+                    monster: monster
+                });
+            }
+            return console.log("monsterIndex", monster);
+        });
+    };
 
     render(){
     console.log(this.state.monsters)
@@ -265,8 +271,7 @@ class MonsterView extends Component{
             });
             }}
         className="monster-div1">
-    
-                        <div data-aos="flip-down" className="monster-card1">
+        <div data-aos="flip-left" className="monster-card1">
                       <div>
                         <img src={this.state.monster.img_url} className="monster-pic1" alt="monsterPic"></img>
                        </div>

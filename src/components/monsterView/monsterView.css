@@ -204,6 +204,7 @@
   }
 
 }
+
 @media (max-width: 1050px) {
   .mon-div-stats p {
     margin-left: 15px;
@@ -230,59 +231,65 @@
     flex-direction: row;
   }
 }
+
 @media (max-width: 800px) {
-.monster-card1 {
-  box-shadow: 1px 1px 15px 5px rgb(29, 29, 29);
-  background-color: #161618;
-  border: 2px solid #D1AE78;
-  text-align: center;
-  margin: 10px;
-  display: flex;
-  flex-direction: column;
+  .monster-card1 {
+    box-shadow: 1px 1px 15px 5px rgb(29, 29, 29);
+    background-color: #161618;
+    border: 2px solid #D1AE78;
+    text-align: center;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .monster-div1 {
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: fixed;
+    z-index: 200;
+    margin-top: 20px;
+    height: 645px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: auto;
+    flex-wrap: wrap;
+    color: white;
+    padding-bottom: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .exp-div5 {
+    width: 85%;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+
+  .exp-div6 {
+    width: 100%;
+    padding-top: 10px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+  }
+
+  .monster-pic1 {
+    margin: auto;
+    border-right: none;
+    width: 290px;
+    height: 232px;
+    padding: 1px;
+  }
 }
-.monster-div1 {
-  margin: auto;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: fixed;
-  z-index: 200;
-  margin-top: 20px;
-  height: 660px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  margin: auto;
-  flex-wrap: wrap;
-  color: white;
-  padding-bottom: 10px;
-  font-family: Arial, Helvetica, sans-serif;
-}
-.exp-div5 {
-  width: 85%;
-  display: flex;
-  margin: auto;
-  flex-direction: column;
-  padding-right: 0px;
-  padding-left: 0px;
-}
-.exp-div6 {
-  width: 100%;
-  padding-top: 10px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  text-align: left;
-}
-.monster-pic1 {
-  margin: auto;
-  border-right: none;
-  width: 290px;
-  height: 232px;
-  padding: 1px;
-}
-}
+
 @media (max-width: 700px) {
   .mon-div-stats p {
     margin-left: 1px;
