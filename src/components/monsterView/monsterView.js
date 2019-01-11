@@ -261,10 +261,10 @@ class MonsterView extends Component {
     };
         xpSort2 = () => {
         this.state.monsters.sort(function (a, b) {
-            if (a.alignment < b.alignment) {
+            if (a.xp < b.xp) {
                 return -1;
             }
-            if (a.alignment > b.alignment) {
+            if (a.xp > b.xp) {
                 return 1;
             }
         });
@@ -402,7 +402,7 @@ class MonsterView extends Component {
                             <h5>Exp Points:  </h5><span className="monster-title2">{this.state.monster.xp} XP</span>
                         </div>
                             <div className="exp-div6">
-                            <h5>Alignment:  </h5><span className="monster-title2">{this.capitalize(this.state.monster.alignment)}</span>
+                            <h5>Alignment:  </h5><span className="monster-title2">{this.state.monster.alignment}</span>
                         </div>
                         </div>
                         <div className="monster-info1">
@@ -543,7 +543,7 @@ class MonsterView extends Component {
                        <p>{this.capitalize(monster.size)}</p>
                         <p>{monster.page}</p>
                         <p>{monster.xp}</p>
-                        <p>{monster.alignment}</p>
+                        <p>{monster.challenge_rating}</p>
                         </div>
                     ))}
                 </div>
